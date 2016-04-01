@@ -1,0 +1,7 @@
+
+sudo: required
+language: c
+script:
+    ./test/auto.sh
+notifications:
+    email: false
