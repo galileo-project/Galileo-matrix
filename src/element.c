@@ -8,3 +8,14 @@ Element *element_new() {
     else
         return element;
 }
+
+Blucket *blucket_new() {
+    Blucket *blucket = (Blucket*)malloc(sizof(Blucket));
+    if(blucket == NULL){
+        return NULL;
+    } else {
+        blucket->len = 0;
+        return blucket;
+    }
+        
+}

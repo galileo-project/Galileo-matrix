@@ -8,10 +8,12 @@ typedef struct element_s {
 } Element;
 
 typedef struct blucket_s {
-    Element *(elements[2]);  
+    Element *(elements[2]);
+    unsigned len;  
 } Blucket;
 
 //Element functions
 Element *element_new(int);
+Blucket *blucket_new();
 
 #endif //MATRIX_ELEMENT_H_

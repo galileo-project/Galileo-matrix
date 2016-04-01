@@ -22,6 +22,22 @@ Matrix *matrix_new() {
 }
 
 int matrix_add(Matrix *matrix, Element *element) {
+    unsigned index = element->col * element->row;
+    if(index >= matrix->len) {
+        int res = matrix_realloc(matrix);
+        if(res != 0)
+            return NULL;
+    }
     
-    
+    Blucket *blucket = matrix->data[index]
+    if(blucket == NULL) {
+        Blucket *_blucket = blucket_new();
+        if(_blucket == NULL)
+            return NULL;
+        else
+            matrix->data[index] = _blucket;
+    } else {
+        
+    }
+        
 }

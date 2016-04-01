@@ -20,5 +20,6 @@ int matrix_add(Matrix*, Element*);
 int matrix_update(Matrix*, Element*);
 int matrix_status(Matrix*);
 int matrix_clear(Matrix*);
+Element *matrix_find(Matrix*);
 
 #endif //MATRIX_MATRIX_H_
