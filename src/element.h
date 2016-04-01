@@ -7,6 +7,10 @@ typedef struct element_s {
     int value;
 } Element;
 
+typedef struct blucket_s {
+    Element *(elements[2]);  
+} Blucket;
+
 //Element functions
 Element *element_new(int);
 

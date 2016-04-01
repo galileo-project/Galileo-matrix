@@ -9,12 +9,12 @@ typedef struct matrix_s {
     unsigned max_raw;
     unsigned curr_col;
     unsigned curr_row;
-    Element **data;
+    unsigned len;
+    Blucket **data;
 } Matrix;
 
 //functions of matrix
 Matrix *matrix_new();
-void matrix_init(Matrix*);
 int matrix_realloc(Matrix*);
 int matrix_add(Matrix*, Element*);
 int matrix_update(Matrix*, Element*);
