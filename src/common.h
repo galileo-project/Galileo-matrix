@@ -11,4 +11,10 @@ const Status STAT_ADD_ELE_ERR    = 10;
 const Status STAT_ELE_EXIST_ERR  = 11;
 const Status STAT_NEW_BLU_ERR    = 12;
 
+typedef enum bool_e {
+    False, True
+} Bool;
+
+void safe_free(void*);
+
 #endif //MATRIX_COMMON_H_
