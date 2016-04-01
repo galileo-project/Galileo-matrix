@@ -4,8 +4,11 @@
 const unsigned INI_MATRIX_COL = 32;
 const unsigned INI_MATRIX_ROW = 32;
 
-const short STAT_SUCCESS        = 0;
-const short STAT_ERROR          = 1;
-const short STAT_ADD_ELE_ERR    = 10;
+typedef short Status;
+const Status STAT_SUCCESS        = 0;
+const Status STAT_ERROR          = 1;
+const Status STAT_ADD_ELE_ERR    = 10;
+const Status STAT_ELE_EXIST_ERR  = 11;
+const Status STAT_NEW_BLU_ERR    = 12;
 
 #endif //MATRIX_COMMON_H_
