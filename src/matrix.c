@@ -14,7 +14,7 @@ Matrix *matrix_new() {
     matrix->len      = matrix->max_col * matrix->max_row;
     matrix->data     = (Blucket**)malloc(matrix->len * sizeof(Blucket*));
     if(matrix->data == NULL) {
-        free(matrix);
+        safe_free(matrix);
         return NULL;
     }
     
@@ -22,7 +22,7 @@ Matrix *matrix_new() {
 }
 
 Status matrix_add(Matrix *matrix, Element *element) {
-    unsigned index = element->col * element->row;
+    unsigned index = element_index(element);
     if(index >= matrix->len) {
         Status res = matrix_realloc(matrix);
         if(res != STAT_SUCCESS)
@@ -40,6 +40,10 @@ Status matrix_add(Matrix *matrix, Element *element) {
         blucket = matrix->data[index];
     }
     
-    return blucket_add(blucket, element);
+    return blucket_add(blucket, element, False);
 }
 
+Status matrix_update(Matrix *matrix, Element *element) {
+    unsigned index = element_index(element);
+    return blucket_add(matrix->data[index], element, True);
+}
