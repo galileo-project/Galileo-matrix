@@ -15,5 +15,6 @@ typedef struct blucket_s {
 //Element functions
 Element *element_new(int);
 Blucket *blucket_new();
+Status blucket_add(Element*);
 
 #endif //MATRIX_ELEMENT_H_

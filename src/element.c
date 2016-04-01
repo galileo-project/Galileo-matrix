@@ -19,3 +19,18 @@ Blucket *blucket_new() {
     }
         
 }
+
+Status blucket_add(Blucket *blucket, Element *element) {
+    int target;
+    if(element->row >= element->col)
+        target = 0;
+    else
+        target = 1
+    
+    if(blucket->elements[target] != NULL){
+        return STAT_ELE_EXIST_ERR;
+    } else {
+        blucket->elements[target] = blucket;
+        return STAT_SUCCESS;
+    }
+}
