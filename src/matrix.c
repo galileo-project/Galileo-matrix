@@ -21,23 +21,25 @@ Matrix *matrix_new() {
     return matrix;
 }
 
-int matrix_add(Matrix *matrix, Element *element) {
+Status matrix_add(Matrix *matrix, Element *element) {
     unsigned index = element->col * element->row;
     if(index >= matrix->len) {
-        int res = matrix_realloc(matrix);
-        if(res != 0)
-            return NULL;
+        Status res = matrix_realloc(matrix);
+        if(res != STAT_SUCCESS)
+            return res;
     }
     
-    Blucket *blucket = matrix->data[index]
-    if(blucket == NULL) {
-        Blucket *_blucket = blucket_new();
-        if(_blucket == NULL)
-            return STAT_ADD_ELE_ERR;
+    Blucket *blucket;
+    if(matrix->data[index] == NULL) {
+        blucket = blucket_new();
+        if(blucket == NULL)
+            return STAT_NEW_BLU_ERR;
         else
-            matrix->data[index] = _blucket;
+            matrix->data[index] = blucket;
     } else {
-        blucket
+        blucket = matrix->data[index];
     }
-        
+    
+    return blucket_add(blucket, element);
 }
+

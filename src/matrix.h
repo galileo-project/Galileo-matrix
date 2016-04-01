@@ -15,11 +15,11 @@ typedef struct matrix_s {
 
 //functions of matrix
 Matrix *matrix_new();
-int matrix_realloc(Matrix*);
-int matrix_add(Matrix*, Element*);
-int matrix_update(Matrix*, Element*);
-int matrix_status(Matrix*);
-int matrix_clear(Matrix*);
+Status matrix_realloc(Matrix*);
+Status matrix_add(Matrix*, Element*);
+Status matrix_update(Matrix*, Element*);
+Status matrix_status(Matrix*);
+Status matrix_clear(Matrix*);
 Element *matrix_find(Matrix*);
 
 #endif //MATRIX_MATRIX_H_
