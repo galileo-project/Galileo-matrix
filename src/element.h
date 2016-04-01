@@ -7,4 +7,7 @@ typedef struct element_s {
     int value;
 } Element;
 
+//Element functions
+Element *element_new(int);
+
 #endif //MATRIX_ELEMENT_H_
