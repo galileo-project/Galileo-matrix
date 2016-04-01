@@ -33,11 +33,11 @@ int matrix_add(Matrix *matrix, Element *element) {
     if(blucket == NULL) {
         Blucket *_blucket = blucket_new();
         if(_blucket == NULL)
-            return NULL;
+            return STAT_ADD_ELE_ERR;
         else
             matrix->data[index] = _blucket;
     } else {
-        
+        blucket
     }
         
 }
