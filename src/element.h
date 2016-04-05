@@ -21,6 +21,7 @@ Element *element_seek_by_pos(Element*, unsigned, unsigned);
 Element *element_seek_by_val(Element*, int);
 
 Blucket *blucket_new();
-Status blucket_add(Element*, Bool);
+Status blucket_add(Blucket*, Element*, Bool);
+Status blucket_free(Blucket*);
 
 #endif //MATRIX_ELEMENT_H_
