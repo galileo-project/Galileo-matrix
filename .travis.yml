@@ -1,0 +1,8 @@
+
+sudo: required
+language: c
+script:
+    chmod 751 ./test/auto.sh
+    ./test/auto.sh
+notifications:
+    email: false
