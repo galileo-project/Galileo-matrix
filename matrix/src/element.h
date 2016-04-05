@@ -17,10 +17,11 @@ typedef struct blucket_s {
 //Element functions
 Element *element_new(int);
 unsigned element_index(Element*);
-Element *element_seek_by_pos(Element*, unsigned, unsigned);
-Element *element_seek_by_val(Element*, int);
+Element *element_seek_by_pos(Blucket*, unsigned, unsigned);
+Element *element_seek_by_val(Blucket*, int);
 
 Blucket *blucket_new();
-Status blucket_add(Element*, Bool);
+Status blucket_add(Blucket*, Element*, Bool);
+Status blucket_free(Blucket*);
 
 #endif //MATRIX_ELEMENT_H_
