@@ -5,10 +5,12 @@ typedef struct element_s {
     unsigned col;
     unsigned raw;
     int value;
+    struct element_s *next;
+    struct element_s *pre;
 } Element;
 
 typedef struct blucket_s {
-    Element *(elements[2]);
+    Element *elements;
     unsigned len;  
 } Blucket;
 

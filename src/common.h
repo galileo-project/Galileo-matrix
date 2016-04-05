@@ -16,5 +16,6 @@ typedef enum bool_e {
 } Bool;
 
 void safe_free(void*);
+unsigned hash_generator(unsigned row, unsigned col, unsigned len);
 
 #endif //MATRIX_COMMON_H_
