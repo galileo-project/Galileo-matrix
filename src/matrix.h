@@ -16,7 +16,6 @@ typedef struct matrix_s {
 
 //functions of matrix
 Matrix *matrix_new();
-Status matrix_realloc(Matrix*);
 Status matrix_init(Matrix*);
 Status matrix_add(Matrix*, Element*);
 Status matrix_update(Matrix*, Element*);
