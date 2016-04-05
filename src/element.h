@@ -11,7 +11,7 @@ typedef struct element_s {
 
 typedef struct blucket_s {
     Element *elements;
-    unsigned len;  
+    unsigned len;
 } Blucket;
 
 //Element functions

@@ -45,17 +45,32 @@ Blucket *blucket_new() {
 }
 
 Status blucket_add(Blucket *blucket, Element *element, Bool update) {
-    int target;
-    if(element->row >= element->col)
-        target = 0;
-    else
-        target = 1
-    
-    if(blucket->elements[target] != NULL && !update){
-        return STAT_ELE_EXIST_ERR;
-    } else {
-        safe_free(blucket->elements[target]);
-        blucket->elements[target] = element;
+    Element *tmp = blucket->elements; 
+    if(tmp == NULL) {
+        element->pre = blucket->elements;
+        blucket->elements = element;
         return STAT_SUCCESS;
+    } else if(POS_EQ(tmp, element) && update) {
+        element->pre = blucket->elements;
+        element->next = blucket->elements->next;
+        blucket->elements = element;
+        return STAT_SUCCESS;
+    }
+        
+    while(tmp != NULL) {
+        if(POS_EQ(tmp->next, element) && update) {
+            element->pre = tmp->next->pre;
+            element->pre = tmp->next->next;
+            safe_free(tmp->next);
+            tmp->next = element;
+            return STAT_SUCCESS;
+        } else if(tmp->next == NULL) {
+            element->pre = tmp;
+            tmp->next = element;
+            return STAT_SUCCESS;
+        } else {
+            tmp = tmp->next;
+            continue;
+        }
     }
 }

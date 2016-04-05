@@ -21,6 +21,7 @@ Status matrix_add(Matrix*, Element*);
 Status matrix_update(Matrix*, Element*);
 Status matrix_status(Matrix*);
 Status matrix_clear(Matrix*);
-Element *matrix_find(Matrix*);
+Element *matrix_find_by_pos(Matrix*, unsigned, unsigned);
+Element *matrix_find_by_val(Matrix*, int);
 
 #endif //MATRIX_MATRIX_H_

@@ -18,4 +18,15 @@ typedef enum bool_e {
 void safe_free(void*);
 unsigned hash_generator(unsigned row, unsigned col, unsigned len);
 
+
+//marco
+#define POS_EQ(ele_l, ele_r) do{ \
+    if(ele_l == NULL || ele_r == NULL) \
+        return 0; \
+    else if((ele_l)->row == (ele_r)->row && (ele_l)->col == (ele_r)->col) \
+        return 1; \
+    else \
+        return 0; \
+    }while(0)
+
 #endif //MATRIX_COMMON_H_
