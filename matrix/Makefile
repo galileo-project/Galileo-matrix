@@ -1,12 +1,13 @@
-TARGET  = "matrix.a"
-CC      = "gcc"
-FLAG    = ""
-
+TARGET  = matrix.a
+CC      = gcc
+FLAG    = -c
+OBJRCTS = 
 
 install:
 
+.PHONY: test
 test:
 
-.PHONY: clear
-clear:
-    rm -rf *.o *.a
+.PHONY: clean
+clean:
+    rm -rf $(OBJECTS) $TARGET
