@@ -1,6 +1,8 @@
 #ifndef MATRIX_ELEMENT_H_
 #define MATRIX_ELEMENT_H_
 
+#include "common.h"
+
 typedef struct element_s {
     unsigned col;
     unsigned raw;

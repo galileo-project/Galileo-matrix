@@ -26,7 +26,7 @@ test: $(TEST_OBJS) $(AR_TARGET)
 
 .PHONY: install
 install: $(AR_TARGET) $(INCLUDE_FILES)
- 	@echo installing $(AR_TARGET) to $(INSTALL_DIR) ...
+	@echo installing $(AR_TARGET) to $(INSTALL_DIR) ...
 	cp $(AR_TARGET) $(INSTALL_DIR)
 	cp -r $(INCLUDE_FILES) $(INCLUDE_DIR)
 
