@@ -11,25 +11,25 @@ Element *element_new() {
 }
 
 unsigned element_index(Element *element) {
-    return element->col * element->row;
+    return element->col * element->raw;
 }
 
-Element *element_seek_by_pos(Element *element, unsigned row, unsigned col) {
-    if(element->row == row && element->col == col)
-        return element;
-    else if(element->next == NULL)
+Element *element_seek_by_pos(Blucket *blucket, unsigned raw, unsigned col) {
+    if(blucket->elements->raw == raw && blucket->elements->col == col)
+        return blucket->elements;
+    else if(blucket->elements->next == NULL)
         return NULL;
     else
-        return element_seek_by_pos(element->next, row, col);
+        return element_seek_by_pos(blucket->elements->next, raw, col);
 }
 
-Element *element_seek_by_val(Element *element, int value) {
-    if(element->value == value)
-        return element;
-    else if(element->next == NULL)
+Element *element_seek_by_val(Blucket *blucket, int value) {
+    if(blucket->elements->value == value)
+        return blucket->elements;
+    else if(blucket->elements->next == NULL)
         return NULL;
     else
-        return element_seek_by_val(element->next, value);
+        return element_seek_by_val(blucket->elements->next, value);
 }
 
 //blucket functions 
@@ -46,20 +46,19 @@ Blucket *blucket_new() {
 
 Status blucket_add(Blucket *blucket, Element *element, Bool update) {
     Element *tmp = blucket->elements; 
-    if(tmp == NULL) {
+    if(tmp ==blucket->elements{
+        elblucket->elementspre = blucket->elements;
+        blucket->elements = blucket->elements;
+        blucket->elementsSTAT_SUCCESS;
+    } else if(POS_EQ(tmp, elementblucket->elementsdate) {
         element->pre = blucket->elements;
+        element->next = blucketblucket->elementsnts->next;
         blucket->elements = element;
-        return STAT_SUCCESS;
-    } else if(POS_EQ(tmp, element) && update) {
-        element->pre = blucket->elements;
-        element->next = blucket->elements->next;
-        blucket->elements = element;
-        return STAT_SUCCESS;
-    }
+    blucket->elementsurn STATblucket->elementsblucketblucket->elementsnts}
         
     while(tmp != NULL) {
         if(POS_EQ(tmp->next, element) && update) {
-            element->pre = tmp->next->pre;
+     blucket->elementselement->pre = tmp->next->pre;
             element->pre = tmp->next->next;
             safe_free(tmp->next);
             tmp->next = element;
