@@ -46,19 +46,20 @@ Blucket *blucket_new() {
 
 Status blucket_add(Blucket *blucket, Element *element, Bool update) {
     Element *tmp = blucket->elements; 
-    if(tmp ==blucket->elements{
-        elblucket->elementspre = blucket->elements;
-        blucket->elements = blucket->elements;
-        blucket->elementsSTAT_SUCCESS;
-    } else if(POS_EQ(tmp, elementblucket->elementsdate) {
+    if(tmp == NULL) {
         element->pre = blucket->elements;
-        element->next = blucketblucket->elementsnts->next;
         blucket->elements = element;
-    blucket->elementsurn STATblucket->elementsblucketblucket->elementsnts}
+        return STAT_SUCCESS;
+    } else if(POS_EQ(tmp, element) && update) {
+        element->pre = blucket->elements;
+        element->next = blucket->elements->next;
+        blucket->elements = element;
+        return STAT_SUCCESS;
+    }
         
     while(tmp != NULL) {
         if(POS_EQ(tmp->next, element) && update) {
-     blucket->elementselement->pre = tmp->next->pre;
+            element->pre = tmp->next->pre;
             element->pre = tmp->next->next;
             safe_free(tmp->next);
             tmp->next = element;
