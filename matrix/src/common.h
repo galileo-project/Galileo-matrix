@@ -2,6 +2,7 @@
 #define MATRIX_COMMON_H_
 
 #include "element.h"
+#include "matrix.h"
 
 const unsigned INI_MATRIX_COL = 32;
 const unsigned INI_MATRIX_ROW = 32;
