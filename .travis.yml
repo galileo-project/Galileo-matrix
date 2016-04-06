@@ -2,7 +2,7 @@
 sudo: required
 language: c
 script:
-    chmod 751 ./test/auto.sh
-    ./test/auto.sh
+    cd matrix
+    make test
 notifications:
     email: false
