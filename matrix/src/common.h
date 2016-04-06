@@ -23,13 +23,11 @@ unsigned hash_generator(Element*, Matrix*);
 
 
 //marco
-#define POS_EQ(ele_l, ele_r) do{ \
-    if(ele_l == NULL || ele_r == NULL) \
-        return 0; \
-    else if((ele_l)->row == (ele_r)->row && (ele_l)->col == (ele_r)->col) \
-        return 1; \
-    else \
-        return 0; \
-    }while(0)
+#define POS_EQ(ele_l, ele_r) (\
+                                 (ele_l == NULL || ele_r == NULL) ? 0 : \
+                                 (\
+                                     ((ele_l)->row == (ele_r)->row && (ele_l)->col == (ele_r)->col) ? 1 : 0 \
+                                 )\
+                             )
 
 #endif //MATRIX_COMMON_H_
