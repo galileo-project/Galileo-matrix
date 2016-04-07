@@ -2,12 +2,16 @@
 #include <stdlib.h>
 
 //element functions 
-Element *element_new() {
+Element *element_new(unsigned raw, unsigned col, int value) {
     Element *element = (Element*)malloc(sizeof(Element));
     if(element == NULL)
         return NULL;
-    else
-        return element;
+    
+    element->raw   = raw;
+    element->col   = col;
+    element->value = value;
+    
+    return element;
 }
 
 unsigned element_index(Element *element) {
@@ -47,11 +51,11 @@ Blucket *blucket_new() {
 Status blucket_add(Blucket *blucket, Element *element, Bool update) {
     Element *tmp = blucket->elements; 
     if(tmp == NULL) {
-        element->pre = blucket->elements;
+        element->pre = NULL;
         blucket->elements = element;
         return STAT_SUCCESS;
     } else if(POS_EQ(tmp, element) && update) {
-        element->pre = blucket->elements;
+        element->pre = NULL;
         element->next = blucket->elements->next;
         blucket->elements = element;
         return STAT_SUCCESS;
@@ -73,4 +77,25 @@ Status blucket_add(Blucket *blucket, Element *element, Bool update) {
             continue;
         }
     }
+    
+    return STAT_SUCCESS;
+}
+
+Status blucket_free(Blucket* blucket) {
+    Element *element;
+    
+    element = blucket->elements;
+    if(element == NULL)
+        return STAT_SUCCESS;
+        
+    while(element->next != NULL)
+        element = element->next;
+    
+    while(element->pre != NULL) {
+        safe_free(element->next);
+        element = element->pre;
+    }
+    safe_free(element);
+    
+    return STAT_SUCCESS;
 }

@@ -17,7 +17,7 @@ typedef struct blucket_s {
 } Blucket;
 
 //Element functions
-Element *element_new();
+Element *element_new(unsigned, unsigned, int);
 unsigned element_index(Element*);
 Element *element_seek_by_pos(Element*, unsigned, unsigned);
 Element *element_seek_by_val(Element*, int);

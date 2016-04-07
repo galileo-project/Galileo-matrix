@@ -8,21 +8,19 @@
                                      ((ele_l)->raw == (ele_r)->raw && (ele_l)->col == (ele_r)->col) ? 1 : 0 \
                                  )\
                              )
-
-const unsigned INI_MATRIX_COL = 32;
-const unsigned INI_MATRIX_RAW = 32;
-
+                             
 typedef short Status;
-const Status STAT_SUCCESS            = 0;
-const Status STAT_ERROR              = 1;
-const Status STAT_ADD_ELE_ERR        = 10;
-const Status STAT_ELE_EXIST_ERR      = 11;
-const Status STAT_NEW_BLU_ERR        = 12;
-const Status STAT_INIT_MATRIX_ERR    = 13;
-const Status STAT_MAX_MATRIX_LEN_ERR = 14;
+extern const Status STAT_SUCCESS, 
+                    STAT_ERROR, 
+                    STAT_ADD_ELE_ERR, 
+                    STAT_ELE_EXIST_ERR, 
+                    STAT_NEW_BLU_ERR, 
+                    STAT_INIT_MATRIX_ERR, 
+                    STAT_MAX_MATRIX_LEN_ERR;
 
 typedef enum bool_e {
-    False, True
+    False = 0, 
+    True  = 1
 } Bool;
 
 void safe_free(void*);
