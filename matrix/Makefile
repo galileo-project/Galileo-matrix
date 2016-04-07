@@ -3,7 +3,7 @@ TEST_TARGET    = test.out
 CC             = gcc
 AR             = ar
 ARFLAGS        = -crv
-CFLAGS         = -I src
+CFLAGS         = -I src -std=c99
 AR_CFILES      = $(notdir $(wildcard ./src/*.c))
 TEST_CFILES    = $(notdir $(wildcard ./test/*.c))
 AR_OBJS        = $(patsubst %.c, %.o, $(AR_CFILES))

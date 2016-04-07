@@ -2,7 +2,6 @@
 sudo: required
 language: c
 script:
-    cd matrix
-    make test
+    cd matrix &&  make test
 notifications:
     email: false
