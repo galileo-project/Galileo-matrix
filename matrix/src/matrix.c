@@ -101,8 +101,6 @@ Element *matrix_find_by_val(Matrix *matrix, int value) {
         element =  element_seek_by_val(matrix->data[index]->elements, value);
         if(element != NULL)
             return element;
-        else
-            continue;
     }
     return NULL;
 }
