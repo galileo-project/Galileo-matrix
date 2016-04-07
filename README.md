@@ -12,4 +12,4 @@ The matrix lib will be install to `/usr/local/lib`, and the header file will cop
 
 ## License
 
-The project release under [MIT LICENSE](https://github.com/ColeChan/Galileo-matrix/blob/dev/LICENSE).
+The project release under [MIT LICENSE](https://github.com/tor4z/Galileo-matrix/blob/master/LICENSE).
