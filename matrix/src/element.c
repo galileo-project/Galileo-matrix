@@ -2,12 +2,16 @@
 #include <stdlib.h>
 
 //element functions 
-Element *element_new() {
+Element *element_new(unsigned raw, unsigned col, int value) {
     Element *element = (Element*)malloc(sizeof(Element));
     if(element == NULL)
         return NULL;
-    else
-        return element;
+    
+    element->raw   = raw;
+    element->col   = col;
+    element->value = value;
+    
+    return element
 }
 
 unsigned element_index(Element *element) {
