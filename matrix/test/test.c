@@ -125,7 +125,7 @@ int test_matrix_find_element(void) {
         return res;
     }
     
-    Eelement *element = matrix_find_by_pos(matrix, 3, 15);
+    Element *element = matrix_find_by_pos(matrix, 3, 15);
     if(element->value == 3*15) {
         LOG_SUCCESS("fine element from matrix by pos");
     } else {
@@ -133,7 +133,7 @@ int test_matrix_find_element(void) {
         return 1;
     }
     
-    Eelement *element = matrix_find_by_val(matrix, 3*15);
+    Element *element = matrix_find_by_val(matrix, 3*15);
     if(element->raw == 3 && element->col == 15) {
         LOG_SUCCESS("fine element from matrix by value");
     } else {
@@ -172,7 +172,7 @@ int test_matrix_update(void) {
     }
     
     Element *new_element = element_new(10, 10, 10+10);
-    Status statux = matrix_update(matrix, new_element);
+    Status status = matrix_update(matrix, new_element);
     if(status != STAT_SUCCESS) {
         LOG_ERR("test matrix update");
         return 1;
@@ -186,7 +186,7 @@ int test_matrix_update(void) {
                 LOG_SUCCESS("test matrix update");
                 return 0;
             } else {
-                LOG_ERR("test matrix update, can't update")
+                LOG_ERR("test matrix update, can't update");
                 return 1;
             }
         }
