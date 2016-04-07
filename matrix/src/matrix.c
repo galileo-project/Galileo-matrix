@@ -1,4 +1,5 @@
 #include "matrix.h"
+#include "element.h"
 #include <stdlib.h>
 
 Matrix *matrix_new() {
