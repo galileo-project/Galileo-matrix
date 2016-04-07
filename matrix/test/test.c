@@ -127,6 +127,10 @@ int test_matrix_find_element(void) {
     }
     
     element = matrix_find_by_pos(matrix, 3, 15);
+    if(element == NULL) {
+        LOG_ERR("fine element from matrix by value");
+        return 1;
+    }
     if(element->value == 3*15) {
         LOG_SUCCESS("fine element from matrix by pos");
     } else {
@@ -134,7 +138,12 @@ int test_matrix_find_element(void) {
         return 1;
     }
     
+    safe_free(element);
     element = matrix_find_by_val(matrix, 3*15);
+    if(element == NULL) {
+        LOG_ERR("fine element from matrix by value");
+        return 1;
+    }
     if(element->raw == 3 && element->col == 15) {
         LOG_SUCCESS("fine element from matrix by value");
     } else {
