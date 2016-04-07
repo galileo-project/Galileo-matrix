@@ -36,7 +36,7 @@ int main() {
             continue;
     }
     
-    LOG_SUCCESS("all mod sucess.");
+    LOG_SUCCESS("sucess.");
     return 0;
 }
 
