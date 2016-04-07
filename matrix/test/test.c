@@ -118,6 +118,7 @@ int test_matrix_add_element(void) {
 }
 
 int test_matrix_find_element(void) {
+    Element *element;
     Matrix *matrix = new_matrix();
     int res = fill_matrix(matrix, 20, 20);
     if(res != 0) {
@@ -125,7 +126,7 @@ int test_matrix_find_element(void) {
         return res;
     }
     
-    Element *element = matrix_find_by_pos(matrix, 3, 15);
+    element = matrix_find_by_pos(matrix, 3, 15);
     if(element->value == 3*15) {
         LOG_SUCCESS("fine element from matrix by pos");
     } else {
@@ -133,7 +134,7 @@ int test_matrix_find_element(void) {
         return 1;
     }
     
-    Element *element = matrix_find_by_val(matrix, 3*15);
+    element = matrix_find_by_val(matrix, 3*15);
     if(element->raw == 3 && element->col == 15) {
         LOG_SUCCESS("fine element from matrix by value");
     } else {
