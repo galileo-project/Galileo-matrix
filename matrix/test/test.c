@@ -8,14 +8,15 @@ const unsigned TEST_COL_LEN = 100;
 
 typedef int (*Func)(void);
 
-static Matrix *new_matrix();
+static Matrix *new_matrix(void);
 int test_new_matrix(void);
 int test_new_element(void);
 int test_matrix_add_element(void);
-int test_config_new();
+int test_config_new(void);
 
 int main() {
-    Func functions[] = {&test_new_matrix, 
+    Func functions[] = {&test_config_new,
+                        &test_new_matrix, 
                         &test_new_element,
                         &test_matrix_add_element};
     unsigned len = sizeof(functions)/sizeof(Func);
@@ -31,7 +32,9 @@ int main() {
     return 0;
 }
 
-int test_config_new() {
+//////// test functions //////////
+
+int test_config_new(void) {
     Config *config = config_new(TEST_RAW_LEN, TEST_COL_LEN);
     if(config == NULL)
         return 1;
@@ -83,7 +86,9 @@ int test_matrix_add_element(void) {
     return 0;
 }
 
-static Matrix *new_matrix() {
+//////// test functions end //////////
+
+static Matrix *new_matrix(void) {
     Config *config = config_new(TEST_RAW_LEN, TEST_COL_LEN);
     return matrix_new(config);
 }
