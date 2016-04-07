@@ -44,16 +44,20 @@ int test_new_matrix(void) {
     Matrix *matrix = matrix_new(config);
     if(matrix == NULL)
         return 1;
-    else
-        return 0;
+    
+    safe_free(config);
+    safe_free(matrix);
+    return 0;
 }
 
 int test_new_element(void) {
     Matrix *matrix = new_matrix();
     if(matrix == NULL)
         return 1;
-    else
-        return 0;
+
+    safe_free(element);
+    return 0;
+        
 }
 
 int test_matrix_add_element(void) {
@@ -62,14 +66,21 @@ int test_matrix_add_element(void) {
         return 1;
         
     Element *element = element_new(0,0,100);
-    if(element == NULL)
+    if(element == NULL) {
+        safe_free(matrix)
         return 1;
+    }
     
     Status status = matrix_add(matrix, element);
-    if(status == STAT_SUCCESS)
-        return 0;
-    else
-        return 1;
+    if(status != STAT_SUCCESS) {
+        safe_free(matrix);
+        safe_free(element);
+        return 1;    
+    }
+    
+    safe_free(element);
+    safe_free(matrix);
+    return 0;
 }
 
 static Matrix *new_matrix() {
