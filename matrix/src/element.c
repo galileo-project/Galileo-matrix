@@ -28,6 +28,9 @@ Element *element_seek_by_pos(Element *element, unsigned raw, unsigned col) {
 }
 
 Element *element_seek_by_val(Element *element, int value) {
+    if(element == NULL)
+        return NULL;
+        
     if(element->value == value)
         return element;
     else if(element->next == NULL)
