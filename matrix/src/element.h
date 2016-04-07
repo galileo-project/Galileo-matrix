@@ -1,12 +1,12 @@
+#include "common.h"
+
 #ifndef MATRIX_ELEMENT_H_
 #define MATRIX_ELEMENT_H_
-
-#include "common.h"
 
 typedef struct element_s {
     unsigned col;
     unsigned raw;
-    int value;
+    int      value;
     struct element_s *next;
     struct element_s *pre;
 } Element;
@@ -17,7 +17,7 @@ typedef struct blucket_s {
 } Blucket;
 
 //Element functions
-Element *element_new(int);
+Element *element_new();
 unsigned element_index(Element*);
 Element *element_seek_by_pos(Blucket*, unsigned, unsigned);
 Element *element_seek_by_val(Blucket*, int);

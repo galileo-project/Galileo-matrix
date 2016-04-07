@@ -1,8 +1,16 @@
+#include "element.h"
+#include "matrix.h"
+
 #ifndef MATRIX_COMMON_H_
 #define MATRIX_COMMON_H_
 
-#include "element.h"
-#include "matrix.h"
+//marco
+#define POS_EQ(ele_l, ele_r) (\
+                                 (ele_l == NULL || ele_r == NULL) ? 0 : \
+                                 (\
+                                     ((ele_l)->raw == (ele_r)->raw && (ele_l)->col == (ele_r)->col) ? 1 : 0 \
+                                 )\
+                             )
 
 const unsigned INI_MATRIX_COL = 32;
 const unsigned INI_MATRIX_ROW = 32;
@@ -21,14 +29,5 @@ typedef enum bool_e {
 
 void safe_free(void*);
 unsigned hash_generator(Element*, Matrix*);
-
-
-//marco
-#define POS_EQ(ele_l, ele_r) (\
-                                 (ele_l == NULL || ele_r == NULL) ? 0 : \
-                                 (\
-                                     ((ele_l)->raw == (ele_r)->raw && (ele_l)->col == (ele_r)->col) ? 1 : 0 \
-                                 )\
-                             )
 
 #endif //MATRIX_COMMON_H_

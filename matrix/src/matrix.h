@@ -1,8 +1,8 @@
-#ifndef MATRIX_MATRIX_H_
-#define MATRIX_MATRIX_H_
-
 #include "common.h"
 #include "element.h"
+
+#ifndef MATRIX_MATRIX_H_
+#define MATRIX_MATRIX_H_
 
 typedef struct matrix_s {
     unsigned max_col;
