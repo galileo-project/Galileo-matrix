@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ColeChan/Galileo-matrix.svg?branch=dev)](https://travis-ci.org/ColeChan/Galileo-matrix)
 
-## Install
+## Build
 
     git clone git@github.com:tor4z/Galileo-matrix.git
     cd Galileo-matrix/matrix
