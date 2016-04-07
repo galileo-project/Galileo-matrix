@@ -10,7 +10,7 @@
                              )
 
 const unsigned INI_MATRIX_COL = 32;
-const unsigned INI_MATRIX_ROW = 32;
+const unsigned INI_MATRIX_RAW = 32;
 
 typedef short Status;
 const Status STAT_SUCCESS         = 0;

@@ -9,7 +9,7 @@ typedef struct matrix_s {
     unsigned max_raw;
     unsigned max_len;
     unsigned curr_col;
-    unsigned curr_row;
+    unsigned curr_raw;
     unsigned curr_len;
     Blucket **data;
 } Matrix;

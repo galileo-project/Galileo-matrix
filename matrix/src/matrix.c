@@ -7,10 +7,10 @@ Matrix *matrix_new() {
         return NULL;
     
     matrix->max_col  = INI_MATRIX_COL;
-    matrix->max_row  = INI_MATRIX_ROW;
-    matrix->max_len  = matrix->max_col * matrix->max_row;
+    matrix->max_raw  = INI_MATRIX_RAW;
+    matrix->max_len  = matrix->max_col * matrix->max_raw;
     matrix->curr_col = 0;
-    matrix->curr_row = 0;
+    matrix->curr_raw = 0;
     matrix->curr_len = 0;
     matrix->data     = (Blucket**)malloc(matrix->max_len * sizeof(Blucket*));
     if(matrix->data == NULL) {
@@ -23,10 +23,10 @@ Matrix *matrix_new() {
 
 Status matrix_init(Matrix *matrix) {
     matrix->max_col  = INI_MATRIX_COL;
-    matrix->max_row  = INI_MATRIX_ROW;
-    matrix->max_len  = matrix->max_col * matrix->max_row;
+    matrix->max_raw  = INI_MATRIX_RAW;
+    matrix->max_len  = matrix->max_col * matrix->max_raw;
     matrix->curr_col = 0;
-    matrix->curr_row = 0;
+    matrix->curr_raw = 0;
     matrix->curr_len = 0;
     
     if(matrix->data != NULL)
@@ -86,9 +86,9 @@ Status matrix_clear(Matrix* matrix) {
     return matrix_init(matrix);
 }
 
-Element *matrix_find_by_pos(Matrix *matrix, unsigned row, unsigned col) {
+Element *matrix_find_by_pos(Matrix *matrix, unsigned raw, unsigned col) {
     unsigned index = hash_generator(element, matrix);
-    return element_seek_by_pos(matrix->data[index], row, col);
+    return element_seek_by_pos(matrix->data[index], raw, col);
 }
 
 Element *matrix_find_by_val(Matrix *matrix, int value) {
@@ -96,6 +96,6 @@ Element *matrix_find_by_val(Matrix *matrix, int value) {
     return element_seek_by_pos(matrix->data[index], value);
 }
 
-unsigned hash_generator(unsigned row, unsigned col, unsigned len) {
+unsigned hash_generator(unsigned raw, unsigned col, unsigned len) {
     
 }
