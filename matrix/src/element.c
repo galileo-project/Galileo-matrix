@@ -14,22 +14,22 @@ unsigned element_index(Element *element) {
     return element->col * element->raw;
 }
 
-Element *element_seek_by_pos(Blucket *blucket, unsigned raw, unsigned col) {
-    if(blucket->elements->raw == raw && blucket->elements->col == col)
-        return blucket->elements;
-    else if(blucket->elements->next == NULL)
+Element *element_seek_by_pos(Element *element, unsigned raw, unsigned col) {
+    if(element->raw == raw && element->col == col)
+        return element;
+    else if(element->next == NULL)
         return NULL;
     else
-        return element_seek_by_pos(blucket->elements->next, raw, col);
+        return element_seek_by_pos(element->next, raw, col);
 }
 
-Element *element_seek_by_val(Blucket *blucket, int value) {
-    if(blucket->elements->value == value)
-        return blucket->elements;
-    else if(blucket->elements->next == NULL)
+Element *element_seek_by_val(Element *element, int value) {
+    if(element->value == value)
+        return element;
+    else if(element->next == NULL)
         return NULL;
     else
-        return element_seek_by_val(blucket->elements->next, value);
+        return element_seek_by_val(element->next, value);
 }
 
 //blucket functions 

@@ -94,6 +94,6 @@ Element *matrix_find_by_val(Matrix *matrix, int value) {
     return element_seek_by_pos(matrix->data[index], value);
 }
 
-unsigned hash_generator(unsigned raw, unsigned col, unsigned len) {
+unsigned hash_generator(Element *element, Matrix *matrix) {
     
 }
