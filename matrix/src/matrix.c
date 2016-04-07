@@ -2,7 +2,6 @@
 #include "element.h"
 #include <stdlib.h>
 
-Status matrix_init(Matrix* , Config*);
 
 //config
 Config *config_new(unsigned raw, unsigned col) {
@@ -36,22 +35,6 @@ Matrix *matrix_new(Config *config) {
     return matrix;
 }
 
-Status matrix_init(Matrix *matrix, Config *config) {
-    matrix->max_col  = config->max_col;
-    matrix->max_raw  = config->max_raw;
-    matrix->max_len  = matrix->max_col * matrix->max_raw;
-    matrix->curr_col = 0;
-    matrix->curr_raw = 0;
-    matrix->curr_len = 0;
-    
-    if(matrix->data != NULL)
-        safe_free(matrix->data);
-    matrix->data = (Blucket**)malloc(matrix->max_len * sizeof(Blucket*));
-    if(matrix->data == NULL)
-        return STAT_INIT_MATRIX_ERR;
-    else
-        return STAT_SUCCESS;
-}
 
 Status matrix_add(Matrix *matrix, Element *element) {
     unsigned index = hash_generator(element->raw, element->col, matrix);
@@ -96,7 +79,7 @@ Status matrix_clear(Matrix* matrix, Config *config) {
         }
     }
     
-    return matrix_init(matrix, config);
+    return STAT_SUCCESS;
 }
 
 Element *matrix_find_by_pos(Matrix *matrix, unsigned raw, unsigned col) {
