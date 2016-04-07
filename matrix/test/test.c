@@ -1,6 +1,7 @@
 #include "common.h"
 #include "matrix.h"
 #include "element.h"
+#include <stdio.h>
 
 typedef int (*Func)(void);
 
