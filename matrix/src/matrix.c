@@ -53,6 +53,13 @@ Status matrix_add(Matrix *matrix, Element *element) {
         blucket = matrix->data[index];
     }
     
+    //Update curr index
+    matrix->curr_len ++;
+    if(element->raw > matrix->curr_raw)
+        matrix->curr_raw = element->raw;
+    if(element->raw > matrix->curr_raw)
+        matrix->curr_raw = element->raw;
+        
     return blucket_add(blucket, element, False);
 }
 
@@ -90,7 +97,7 @@ Element *matrix_find_by_pos(Matrix *matrix, unsigned raw, unsigned col) {
 Element *matrix_find_by_val(Matrix *matrix, int value) {
     unsigned index;
     Element *element;
-    for(index = 0; index < matrix->curr_len; index++) {
+    for(index = 0; index < matrix->max_len; index++) {
         element =  element_seek_by_val(matrix->data[index]->elements, value);
         if(element != NULL)
             return element;
