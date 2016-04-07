@@ -77,6 +77,8 @@ Status blucket_add(Blucket *blucket, Element *element, Bool update) {
             continue;
         }
     }
+    
+    return STAT_SUCCESS;
 }
 
 Status blucket_free(Blucket* blucket) {

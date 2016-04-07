@@ -19,7 +19,7 @@ int main() {
                         &test_new_matrix, 
                         &test_new_element,
                         &test_matrix_add_element};
-    unsigned len = sizeof(functions)/sizeof(Func);
+    unsigned len = sizeof(functions)/sizeof(functions[0]);
     
     for(int i = 0; i < len; i++) {
         int res = (*functions[i])();
