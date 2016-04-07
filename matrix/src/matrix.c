@@ -1,5 +1,4 @@
 #include "matrix.h"
-#include "common.h"
 #include <stdlib.h>
 
 Matrix *matrix_new() {
@@ -95,4 +94,8 @@ Element *matrix_find_by_pos(Matrix *matrix, unsigned row, unsigned col) {
 Element *matrix_find_by_val(Matrix *matrix, int value) {
     unsigned index = hash_generator(element, matrix);
     return element_seek_by_pos(matrix->data[index], value);
+}
+
+unsigned hash_generator(unsigned row, unsigned col, unsigned len) {
+    
 }

@@ -1,6 +1,3 @@
-#include "element.h"
-#include "matrix.h"
-
 #ifndef MATRIX_COMMON_H_
 #define MATRIX_COMMON_H_
 
@@ -28,6 +25,5 @@ typedef enum bool_e {
 } Bool;
 
 void safe_free(void*);
-unsigned hash_generator(Element*, Matrix*);
 
 #endif //MATRIX_COMMON_H_
