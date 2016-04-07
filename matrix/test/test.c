@@ -36,7 +36,7 @@ int main() {
             continue;
     }
     
-    LOG_SUCCESS("sucess");
+    LOG_SUCCESS("success");
     return 0;
 }
 
