@@ -30,7 +30,7 @@ int test_new_matrix(void) {
     if(matrix == NULL)
         return 1;
     else
-        return 0
+        return 0;
 }
 
 int test_new_element(void) {
@@ -38,7 +38,7 @@ int test_new_element(void) {
     if(matrix == NULL)
         return 1;
     else
-        return 0
+        return 0;
 }
 
 int test_matrix_add_element(void) {
