@@ -85,7 +85,7 @@ Status matrix_clear(Matrix* matrix) {
 }
 
 Element *matrix_find_by_pos(Matrix *matrix, unsigned raw, unsigned col) {
-    unsigned index = hash_generator(element, matrix);
+    unsigned index = hash_generator(raw, col, matrix);
     return element_seek_by_pos(matrix->data[index], raw, col);
 }
 
