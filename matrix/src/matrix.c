@@ -90,8 +90,14 @@ Element *matrix_find_by_pos(Matrix *matrix, unsigned raw, unsigned col) {
 }
 
 Element *matrix_find_by_val(Matrix *matrix, int value) {
-    unsigned index = hash_generator(element->raw, element->col, matrix);
-    return element_seek_by_pos(matrix->data[index], value);
+    unsigned index;
+    for(index = 0; index < matrix->curr_len; index++)
+        Element *element =  element_seek_by_pos(matrix->data[index], value);
+        if(element != NULL)
+            return element;
+        else
+            continue;
+    return NULL;
 }
 
 unsigned hash_generator(unsigned raw, unsigned col, Matrix *matrix) {
