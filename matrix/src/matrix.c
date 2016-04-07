@@ -110,3 +110,8 @@ Element *matrix_find_by_val(Matrix *matrix, int value) {
 unsigned hash_generator(unsigned raw, unsigned col, Matrix *matrix) {
     return (raw * col);
 }
+
+Status matrix_expand(Matrix* matrix) {
+    //TODO implement
+    return STAT_SUCCESS;
+}

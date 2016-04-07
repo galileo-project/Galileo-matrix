@@ -29,6 +29,6 @@ Status matrix_clear(Matrix*);
 Element *matrix_find_by_pos(Matrix*, unsigned, unsigned);
 Element *matrix_find_by_val(Matrix*, int);
 unsigned hash_generator( unsigned, unsigned, Matrix*);
-//TODO add auto expand matrix
+Status matrix_expand(Matrix*);
 
 #endif //MATRIX_MATRIX_H_
