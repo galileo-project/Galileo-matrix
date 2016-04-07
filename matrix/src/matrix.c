@@ -2,13 +2,27 @@
 #include "element.h"
 #include <stdlib.h>
 
-Matrix *matrix_new() {
+Status matrix_init(Matrix* , Config*);
+
+//config
+Config *config_new(unsigned raw, unsigned col) {
+    Config *config = (Config*)malloc(sizeof(Config));
+    if(config == NULL)
+        return NULL;
+    
+    config->max_col = col;
+    config->max_raw = raw;
+    
+    return config;
+}
+
+Matrix *matrix_new(Config *config) {
     Matrix *matrix = (Matrix*)malloc(sizeof(Matrix));
     if(matrix == NULL)
         return NULL;
     
-    matrix->max_col  = INI_MATRIX_COL;
-    matrix->max_raw  = INI_MATRIX_RAW;
+    matrix->max_col  = config->max_col;
+    matrix->max_raw  = config->max_raw;
     matrix->max_len  = matrix->max_col * matrix->max_raw;
     matrix->curr_col = 0;
     matrix->curr_raw = 0;
@@ -22,9 +36,9 @@ Matrix *matrix_new() {
     return matrix;
 }
 
-Status matrix_init(Matrix *matrix) {
-    matrix->max_col  = INI_MATRIX_COL;
-    matrix->max_raw  = INI_MATRIX_RAW;
+Status matrix_init(Matrix *matrix, Config *config) {
+    matrix->max_col  = config->max_col;
+    matrix->max_raw  = config->max_raw;
     matrix->max_len  = matrix->max_col * matrix->max_raw;
     matrix->curr_col = 0;
     matrix->curr_raw = 0;
@@ -64,7 +78,7 @@ Status matrix_update(Matrix *matrix, Element *element) {
     return blucket_add(matrix->data[index], element, True);
 }
 
-Status matrix_clear(Matrix* matrix) {
+Status matrix_clear(Matrix* matrix, Config *config) {
     unsigned i;
     Blucket *blucket;
     Status status;
@@ -82,7 +96,7 @@ Status matrix_clear(Matrix* matrix) {
         }
     }
     
-    return matrix_init(matrix);
+    return matrix_init(matrix, config);
 }
 
 Element *matrix_find_by_pos(Matrix *matrix, unsigned raw, unsigned col) {

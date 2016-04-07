@@ -14,12 +14,18 @@ typedef struct matrix_s {
     Blucket **data;
 } Matrix;
 
+typedef struct config_s {
+    unsigned max_col;
+    unsigned max_raw;
+} Config;
+
 //functions of matrix
-Matrix *matrix_new();
-Status matrix_init(Matrix*);
+Config *config_new(unsigned, unsigned);
+
+Matrix *matrix_new(Config*);
 Status matrix_add(Matrix*, Element*);
 Status matrix_update(Matrix*, Element*);
-Status matrix_clear(Matrix*);
+Status matrix_clear(Matrix*, Config*);
 Element *matrix_find_by_pos(Matrix*, unsigned, unsigned);
 Element *matrix_find_by_val(Matrix*, int);
 unsigned hash_generator( unsigned, unsigned, Matrix*);
