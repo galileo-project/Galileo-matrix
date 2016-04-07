@@ -2,7 +2,7 @@
 #include "matrix.h"
 #include "element.h"
 
-typedef void (*Func)(void);
+typedef int (*Func)(void);
 
 int test_new_matrix(void);
 int test_new_element(void);
