@@ -34,8 +34,8 @@ Element *element_seek_by_val(Blucket *blucket, int value) {
 
 //blucket functions 
 Blucket *blucket_new() {
-    Blucket *blucket = (Blucket*)malloc(sizof(Blucket));
-    if(blucket == NULL){
+    Blucket *blucket = (Blucket*)malloc(sizeof(Blucket));
+    if(blucket == NULL) {
         return NULL;
     } else {
         blucket->len = 0;
