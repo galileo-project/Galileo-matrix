@@ -1,3 +1,4 @@
+#include "common.h"
 #include "matrix.h"
 #include "element.h"
 
@@ -10,11 +11,11 @@ int test_matrix_add_element(void);
 int main() {
     Func functions[] = {test_new_matrix, 
                         test_new_element,
-                        test_matrix_add_element}
-    unsigned len = sizeof(functions)/sizeof(Func)
+                        test_matrix_add_element};
+    unsigned len = sizeof(functions)/sizeof(Func);
     
     for(int i = 0; i < len; i++) {
-        int res = functions[i]()
+        int res = functions[i]();
         if(res != 0)
             return res;
         else
@@ -49,7 +50,7 @@ int test_matrix_add_element(void) {
     if(element == NULL)
         return 1;
     
-    Status status matrix_add(element);
+    Status status matrix_add(matrix, element);
     if(status == STAT_SUCCESS)
         return 0;
     else
