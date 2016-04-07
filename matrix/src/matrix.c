@@ -90,10 +90,10 @@ Element *matrix_find_by_pos(Matrix *matrix, unsigned raw, unsigned col) {
 }
 
 Element *matrix_find_by_val(Matrix *matrix, int value) {
-    unsigned index = hash_generator(element, matrix);
+    unsigned index = hash_generator(element->raw, element->col, matrix);
     return element_seek_by_pos(matrix->data[index], value);
 }
 
-unsigned hash_generator(Element *element, Matrix *matrix) {
+unsigned hash_generator(unsigned raw, unsigned col, Matrix *matrix) {
     
 }
