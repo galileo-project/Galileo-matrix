@@ -65,7 +65,7 @@ Status matrix_update(Matrix *matrix, Element *element) {
 
 Status matrix_clear(Matrix* matrix) {
     unsigned i;
-    Blucket blucket;
+    Blucket *blucket;
     Status status;
     
     for(i=0; i < matrix->max_len; i++) {
