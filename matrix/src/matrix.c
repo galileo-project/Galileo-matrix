@@ -106,6 +106,7 @@ Element *matrix_find_by_val(Matrix *matrix, int value) {
 }
 
 unsigned hash_generator(unsigned raw, unsigned col, Matrix *matrix) {
+    //TODO update hash generator
     return (raw * col);
 }
 
