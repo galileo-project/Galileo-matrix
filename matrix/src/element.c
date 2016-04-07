@@ -11,7 +11,7 @@ Element *element_new(unsigned raw, unsigned col, int value) {
     element->col   = col;
     element->value = value;
     
-    return element
+    return element;
 }
 
 unsigned element_index(Element *element) {
