@@ -9,13 +9,13 @@ int test_new_element(void);
 int test_matrix_add_element(void);
 
 int main() {
-    Func functions[] = {test_new_matrix, 
-                        test_new_element,
-                        test_matrix_add_element};
+    Func functions[] = {&test_new_matrix, 
+                        &test_new_element,
+                        &test_matrix_add_element};
     unsigned len = sizeof(functions)/sizeof(Func);
     
     for(int i = 0; i < len; i++) {
-        int res = functions[i]();
+        int res = (*functions[i])();
         if(res != 0)
             return res;
         else
