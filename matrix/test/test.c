@@ -51,8 +51,8 @@ int test_new_matrix(void) {
 }
 
 int test_new_element(void) {
-    Matrix *matrix = new_matrix();
-    if(matrix == NULL)
+    Element *element = element_new(0,0,100);
+    if(element == NULL)
         return 1;
 
     safe_free(element);
@@ -67,7 +67,7 @@ int test_matrix_add_element(void) {
         
     Element *element = element_new(0,0,100);
     if(element == NULL) {
-        safe_free(matrix)
+        safe_free(matrix);
         return 1;
     }
     
