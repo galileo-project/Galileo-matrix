@@ -61,7 +61,7 @@ Status matrix_update(Matrix *matrix, Element *element) {
     return blucket_add(matrix->data[index], element, True);
 }
 
-Status matrix_clear(Matrix* matrix, Config *config) {
+Status matrix_clear(Matrix* matrix) {
     unsigned i;
     Blucket *blucket;
     Status status;
