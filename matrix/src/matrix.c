@@ -39,7 +39,7 @@ Status matrix_init(Matrix *matrix) {
 }
 
 Status matrix_add(Matrix *matrix, Element *element) {
-    unsigned index = hash_generator(element, matrix);
+    unsigned index = hash_generator(element->raw, element->col, matrix);
     if(index >= matrix->max_len) {
         return STAT_MAX_MATRIX_LEN_ERR;
     }
@@ -59,7 +59,7 @@ Status matrix_add(Matrix *matrix, Element *element) {
 }
 
 Status matrix_update(Matrix *matrix, Element *element) {
-    unsigned index = hash_generator(element, matrix);
+    unsigned index = hash_generator(element->raw, element->col, matrix);
     return blucket_add(matrix->data[index], element, True);
 }
 
