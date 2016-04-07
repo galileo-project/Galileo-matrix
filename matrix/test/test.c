@@ -50,7 +50,7 @@ int test_matrix_add_element(void) {
     if(element == NULL)
         return 1;
     
-    Status status matrix_add(matrix, element);
+    Status status = matrix_add(matrix, element);
     if(status == STAT_SUCCESS)
         return 0;
     else
