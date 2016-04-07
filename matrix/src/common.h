@@ -22,7 +22,8 @@ const Status STAT_INIT_MATRIX_ERR    = 13;
 const Status STAT_MAX_MATRIX_LEN_ERR = 14;
 
 typedef enum bool_e {
-    False, True
+    False = 0, 
+    True  = 1
 } Bool;
 
 void safe_free(void*);
