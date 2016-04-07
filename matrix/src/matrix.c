@@ -40,10 +40,8 @@ Status matrix_init(Matrix *matrix) {
 
 Status matrix_add(Matrix *matrix, Element *element) {
     unsigned index = hash_generator(element, matrix);
-    if(index >= matrix->len) {
-        Status res = matrix_realloc(matrix);
-        if(res != STAT_SUCCESS)
-            return res;
+    if(index >= matrix->max_len) {
+        return STAT_MAX_MATRIX_LEN_ERR;
     }
     
     Blucket *blucket;
