@@ -86,14 +86,14 @@ Status matrix_clear(Matrix* matrix) {
 
 Element *matrix_find_by_pos(Matrix *matrix, unsigned raw, unsigned col) {
     unsigned index = hash_generator(raw, col, matrix);
-    return element_seek_by_pos(matrix->data[index], raw, col);
+    return element_seek_by_pos(matrix->data[index]->elements, raw, col);
 }
 
 Element *matrix_find_by_val(Matrix *matrix, int value) {
     unsigned index;
     Element *element;
     for(index = 0; index < matrix->curr_len; index++) {
-        element =  element_seek_by_val(matrix->data[index], value);
+        element =  element_seek_by_val(matrix->data[index]->elements, value);
         if(element != NULL)
             return element;
         else
