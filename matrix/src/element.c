@@ -136,7 +136,6 @@ Element *blucket_seek_by_pos(Blucket *blucket, unsigned row, unsigned col) {
 Element *blucket_seek_by_val(Blucket *blucket, int value) {
     Element *element = blucket->elements;
     Element *ret = NULL;
-    Element *tmp;
     
     if(element == NULL)
         return NULL;
