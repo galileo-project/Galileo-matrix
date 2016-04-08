@@ -27,7 +27,7 @@ Blucket *blucket_new() {
         return NULL;
     } else {
         blucket->len = 0;
-        blucket-elements = NULL;
+        blucket->elements = NULL;
         return blucket;
     }
         
