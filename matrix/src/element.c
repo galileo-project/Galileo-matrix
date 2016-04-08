@@ -36,19 +36,17 @@ Element *element_copy(Element *target) {
     return element_new(target->row, target->col, target->value);
 }
 
-Status element_link(Element* header, Element *element) {
+Element *element_link(Element* header, Element *element) {
     Element *tmp = element_copy(element);
     if(tmp == NULL)
-        return STAT_COPY_ELE_ERR;
+        return NULL;
     
     if(header != NULL) {
-        tmp->next = header;
+        tmp->next   = header;
         header->pre = tmp;
-        
     }
-    header = tmp;
     
-    return STAT_SUCCESS;
+    return tmp;
 }
 
 //blucket functions 
@@ -142,9 +140,9 @@ Element *blucket_seek_by_val(Blucket *blucket, int value) {
         
     while(element != NULL) {
         if(element->value == value) {
-            element_link(ret, element);
+            ret = element_link(ret, element);
         } else if(element->next == NULL) { 
-            return NULL;
+            break;
         }
         
         element = element->next;

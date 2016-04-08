@@ -20,7 +20,7 @@ typedef struct blucket_s {
 Element *element_new(unsigned, unsigned, int);
 Element* element_next(Element*);
 Element *element_copy(Element*);
-Status   element_link(Element*, Element*);
+Element *element_link(Element*, Element*);
 void     element_print(Element*);
 
 Blucket *blucket_new();
