@@ -153,11 +153,15 @@ int test_matrix_find_element(void) {
         LOG_ERR("fine element from matrix by value");
         return 1;
     }
-    if(element->row == 3 && element->col == 15) {
-        LOG_SUCCESS("fine element from matrix by value");
-    } else {
-        LOG_ERR("find element from matrix by value");
-        return 1;
+    while(element != NULL) {
+        if(element->row == 3 && element->col == 15) {
+            LOG_SUCCESS("fine element from matrix by value");
+        } else if(element->next == NULL){
+            LOG_ERR("find element from matrix by value");
+            return 1;
+        } else {
+            element = element->next;
+        }
     }
     
     return 0;
