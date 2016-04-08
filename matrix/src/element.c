@@ -38,6 +38,7 @@ Status blucket_add(Blucket *blucket, Element *element, Bool update) {
     Element *tmp = blucket->elements; 
     if(tmp == NULL) {
         blucket->elements = element;
+        blucket->len++;
         return STAT_SUCCESS;
     }
     
@@ -55,6 +56,7 @@ Status blucket_add(Blucket *blucket, Element *element, Bool update) {
         } else if(tmp->next == NULL) {
             element->pre = tmp;
             tmp->next = element;
+            blucket->len++;
             return STAT_SUCCESS;
         } else {
             tmp = tmp->next;
@@ -103,17 +105,27 @@ Element *blucket_seek_by_pos(Blucket *blucket, unsigned row, unsigned col) {
 
 Element *blucket_seek_by_val(Blucket *blucket, int value) {
     Element *element = blucket->elements;
+    Element *ret;
+    Element *tmp;
+    
     if(element == NULL)
         return NULL;
         
     while(element != NULL) {
-        if(element->value == value)
-            return element;
-        else if(element->next == NULL)
+        if(element->value == value) {
+            if(ret == NULL) {
+                ret == element
+            } else {
+                tmp->next = element;
+            }
+            element->pre = tmp;
+            tmp = element;
+        } else if(element->next == NULL) { 
             return NULL;
-        else
+        } else {
             element = element->next;
+        }
     }
     
-    return NULL;
+    return ret;
 }

@@ -5,5 +5,4 @@
 
 void safe_free(void*);
 
-
 #endif //MATRIX_UTILS_H_
