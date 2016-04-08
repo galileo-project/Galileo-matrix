@@ -114,7 +114,7 @@ Element *blucket_seek_by_val(Blucket *blucket, int value) {
     while(element != NULL) {
         if(element->value == value) {
             if(ret == NULL) {
-                ret == element
+                ret = element;
             } else {
                 tmp->next = element;
             }

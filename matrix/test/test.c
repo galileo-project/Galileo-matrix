@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "common.h"
 #include "matrix.h"
+#include "utils.h"
 #include "element.h"
 
 #define LOG_ERR(msg) do{\
