@@ -9,7 +9,3 @@ const Status STAT_NEW_BLU_ERR        = 12;
 const Status STAT_INIT_MATRIX_ERR    = 13;
 const Status STAT_MAX_MATRIX_LEN_ERR = 14;
 
-void safe_free(void *p) {
-    if(p != NULL)
-        free(p);
-}

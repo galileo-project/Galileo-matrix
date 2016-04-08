@@ -1,5 +1,6 @@
 #include "matrix.h"
 #include "element.h"
+#include "utils.h"
 #include <stdlib.h>
 
 //config

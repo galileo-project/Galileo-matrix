@@ -23,6 +23,4 @@ typedef enum bool_e {
     True  = 1
 } Bool;
 
-void safe_free(void*);
-
 #endif //MATRIX_COMMON_H_
