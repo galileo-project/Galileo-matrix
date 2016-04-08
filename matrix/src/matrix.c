@@ -124,7 +124,7 @@ Status matrix_print(Matrix* matrix) {
             else
                 res = element->value;
                          
-            printf("  %d  ", res);
+            printf("%4d", res);
         }
         printf("|\n");
     }
