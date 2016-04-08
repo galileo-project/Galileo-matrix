@@ -1,5 +1,6 @@
 #include "element.h"
 #include "utils.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 //element functions 
@@ -17,8 +18,8 @@ Element *element_new(unsigned row, unsigned col, int value) {
     return element;
 }
 
-unsigned element_index(Element *element) {
-    return element->col * element->row;
+void element_print(Element *element) {
+    printf("(%d, %d): %d\n", element->row, element->col, element->value);
 }
 
 //blucket functions 
@@ -105,7 +106,7 @@ Element *blucket_seek_by_pos(Blucket *blucket, unsigned row, unsigned col) {
 
 Element *blucket_seek_by_val(Blucket *blucket, int value) {
     Element *element = blucket->elements;
-    Element *ret;
+    Element *ret = NULL;
     Element *tmp;
     
     if(element == NULL)
@@ -120,12 +121,11 @@ Element *blucket_seek_by_val(Blucket *blucket, int value) {
             }
             element->pre = tmp;
             tmp = element;
-            element = element->next;
         } else if(element->next == NULL) { 
             return NULL;
-        } else {
-            element = element->next;
         }
+        
+        element = element->next;
     }
     
     return ret;

@@ -110,3 +110,24 @@ Matrix *array_to_matrix(int *array, unsigned row, unsigned col) {
     //TODO implement
     return NULL;
 }
+
+Status matrix_print(Matrix* matrix) {
+    Element *element;
+    int res;
+    
+    for(unsigned row = 0; row < matrix->curr_row; row++) {
+        printf("|");
+        for(unsigned col = 0; col < matrix->curr_col; col++) {
+            element = matrix_find_by_pos(matrix, row, col);
+            if(element == NULL)
+                res = 0;
+            else
+                res = element->value;
+                         
+            printf("  %d  ", res);
+        }
+        printf("|\n");
+    }
+    
+    return STAT_SUCCESS;
+}

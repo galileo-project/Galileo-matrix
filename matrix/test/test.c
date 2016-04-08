@@ -34,6 +34,7 @@ int test_config_new(void);
 int test_matrix_find_element(void);
 int test_matrix_clear(void);
 int test_matrix_update(void);
+int test_matrix_print(void);
 
 int main() {
     Func functions[] = {&test_config_new,
@@ -42,7 +43,8 @@ int main() {
                         &test_matrix_add_element,
                         &test_matrix_find_element,
                         &test_matrix_clear,
-                        &test_matrix_update};
+                        &test_matrix_update,
+                        &test_matrix_print};
     unsigned len = sizeof(functions)/sizeof(functions[0]);
     int result = 0;
 
@@ -218,6 +220,19 @@ int test_matrix_update(void) {
         }
     }
         
+}
+
+int test_matrix_print(void) {
+    Matrix *matrix = new_matrix();
+    int res = fill_matrix(matrix, 20, 20);
+    if(res != 0) {
+        LOG_ERR("test matrix print -> fill matrix error");
+        return res;
+    }
+    
+    matrix_print(matrix);
+    LOG_SUCCESS("matrix print");
+    return 0;
 }
 
 //////// test functions end //////////
