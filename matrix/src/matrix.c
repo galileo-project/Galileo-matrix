@@ -116,7 +116,7 @@ Status matrix_print(Matrix* matrix) {
     int res;
     
     for(unsigned row = 0; row < matrix->curr_row; row++) {
-        printf("|");
+        printf(" |  ");
         for(unsigned col = 0; col < matrix->curr_col; col++) {
             element = matrix_find_by_pos(matrix, row, col);
             if(element == NULL)
@@ -126,7 +126,7 @@ Status matrix_print(Matrix* matrix) {
                          
             printf("%4d", res);
         }
-        printf("|\n");
+        printf("  |\n");
     }
     
     return STAT_SUCCESS;
