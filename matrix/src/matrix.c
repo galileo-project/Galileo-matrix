@@ -98,7 +98,7 @@ Element *matrix_find_by_val(Matrix *matrix, int value) {
     unsigned index;
     Element *element;
     for(index = 0; index < matrix->max_len; index++) {
-        printf("matrix find by val matrix, max_len: %d index: %d \n");
+        printf("matrix find by val matrix, max_len: %d index: %d \n", matrix->max_len, index);
         element =  blucket_seek_by_val(matrix->data[index], value);
         if(element != NULL)
             return element;
