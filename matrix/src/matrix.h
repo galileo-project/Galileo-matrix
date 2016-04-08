@@ -11,7 +11,7 @@ typedef struct matrix_s {
     unsigned curr_col;
     unsigned curr_raw;
     unsigned curr_len;
-    Blucket  *data;
+    Blucket  **data;
 } Matrix;
 
 typedef struct config_s {

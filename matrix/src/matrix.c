@@ -25,11 +25,13 @@ Matrix *matrix_new(Config *config) {
     matrix->curr_col = 0;
     matrix->curr_raw = 0;
     matrix->curr_len = 0;
-    matrix->data     = (Blucket*)malloc(matrix->max_len * sizeof(Blucket));
+    matrix->data     = (Blucket**)malloc(matrix->max_len * sizeof(Blucket*));
     if(matrix->data == NULL) {
         safe_free(matrix);
         return NULL;
     }
+    for(unsigned i = 0; i < matrix->max_len; i++)
+        matrix[i] = blucket_new();
     
     return matrix;
 }
@@ -41,17 +43,6 @@ Status matrix_add(Matrix *matrix, Element *element) {
         return STAT_MAX_MATRIX_LEN_ERR;
     }
     
-    Blucket *blucket;
-    if(matrix->data[index] == NULL) {
-        blucket = blucket_new();
-        if(blucket == NULL)
-            return STAT_NEW_BLU_ERR;
-        else
-            matrix->data[index] = blucket;
-    } else {
-        blucket = matrix->data[index];
-    }
-    
     //Update curr index
     matrix->curr_len ++;
     if(element->raw > matrix->curr_raw)
@@ -59,7 +50,7 @@ Status matrix_add(Matrix *matrix, Element *element) {
     if(element->raw > matrix->curr_raw)
         matrix->curr_raw = element->raw;
         
-    return blucket_add(blucket, element, False);
+    return blucket_add(matrix->data[index], element, False);
 }
 
 Status matrix_update(Matrix *matrix, Element *element) {
