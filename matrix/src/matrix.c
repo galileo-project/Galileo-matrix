@@ -48,8 +48,8 @@ Status matrix_add(Matrix *matrix, Element *element) {
     matrix->curr_len ++;
     if(element->row > matrix->curr_row)
         matrix->curr_row = element->row;
-    if(element->row > matrix->curr_row)
-        matrix->curr_row = element->row;
+    if(element->col > matrix->curr_col)
+        matrix->curr_col = element->col;
         
     return blucket_add(matrix->data[index], element, False);
 }
