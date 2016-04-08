@@ -5,7 +5,7 @@
 
 typedef struct element_s {
     unsigned col;
-    unsigned raw;
+    unsigned row;
     int      value;
     struct element_s *next;
     struct element_s *pre;
@@ -18,12 +18,15 @@ typedef struct blucket_s {
 
 //Element functions
 Element *element_new(unsigned, unsigned, int);
-unsigned element_index(Element*);
-Element *element_seek_by_pos(Element*, unsigned, unsigned);
-Element *element_seek_by_val(Element*, int);
+Element* element_next(Element*);
+Element *element_copy(Element*);
+Element *element_link(Element*, Element*);
+void     element_print(Element*);
 
 Blucket *blucket_new();
 Status blucket_add(Blucket*, Element*, Bool);
 Status blucket_free(Blucket*);
+Element *blucket_seek_by_pos(Blucket*, unsigned, unsigned);
+Element *blucket_seek_by_val(Blucket*, int);
 
 #endif //MATRIX_ELEMENT_H_

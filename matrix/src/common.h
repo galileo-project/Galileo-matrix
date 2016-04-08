@@ -5,7 +5,7 @@
 #define POS_EQ(ele_l, ele_r) (\
                                  (ele_l == NULL || ele_r == NULL) ? 0 : \
                                  (\
-                                     ((ele_l)->raw == (ele_r)->raw && (ele_l)->col == (ele_r)->col) ? 1 : 0 \
+                                     ((ele_l)->row == (ele_r)->row && (ele_l)->col == (ele_r)->col) ? 1 : 0 \
                                  )\
                              )
                              
@@ -16,13 +16,13 @@ extern const Status STAT_SUCCESS,
                     STAT_ELE_EXIST_ERR, 
                     STAT_NEW_BLU_ERR, 
                     STAT_INIT_MATRIX_ERR, 
+                    STAT_COPY_ELE_ERR,
+                    STAT_LINK_ELE_ERR,
                     STAT_MAX_MATRIX_LEN_ERR;
 
 typedef enum bool_e {
     False = 0, 
     True  = 1
 } Bool;
-
-void safe_free(void*);
 
 #endif //MATRIX_COMMON_H_

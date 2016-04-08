@@ -8,8 +8,6 @@ const Status STAT_ELE_EXIST_ERR      = 11;
 const Status STAT_NEW_BLU_ERR        = 12;
 const Status STAT_INIT_MATRIX_ERR    = 13;
 const Status STAT_MAX_MATRIX_LEN_ERR = 14;
+const Status STAT_COPY_ELE_ERR       = 15;
+const Status STAT_LINK_ELE_ERR       = 16;
 
-void safe_free(void *p) {
-    if(p != NULL)
-        free(p);
-}
