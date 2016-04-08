@@ -22,6 +22,13 @@ void element_print(Element *element) {
     printf("(%d, %d): %d\n", element->row, element->col, element->value);
 }
 
+Element* element_next(Element *element) {
+    if(element == NULL)
+        return NULL;
+    else
+        return element->next;
+}
+
 //blucket functions 
 Blucket *blucket_new() {
     Blucket *blucket = (Blucket*)malloc(sizeof(Blucket));

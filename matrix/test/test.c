@@ -243,8 +243,8 @@ static Matrix *new_matrix(void) {
 }
 
 static int fill_matrix(Matrix *matrix, unsigned row, unsigned col) {
-    for(unsigned i =0; i < row; i++) {
-        for(unsigned j = 0; j < col; j++) {
+    for(unsigned i =0; i <= row; i++) {
+        for(unsigned j = 0; j <= col; j++) {
             Element *element = element_new(i, j, i*j);
             if(element == NULL)
                 return 1;

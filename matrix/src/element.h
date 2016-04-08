@@ -18,6 +18,7 @@ typedef struct blucket_s {
 
 //Element functions
 Element *element_new(unsigned, unsigned, int);
+Element* element_next(Element*);
 void     element_print(Element*);
 
 Blucket *blucket_new();
