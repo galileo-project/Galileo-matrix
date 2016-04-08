@@ -1,7 +1,7 @@
 #include "matrix.h"
 #include "element.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 
 //config
 Config *config_new(unsigned raw, unsigned col) {
@@ -91,14 +91,15 @@ Status matrix_clear(Matrix* matrix) {
 
 Element *matrix_find_by_pos(Matrix *matrix, unsigned raw, unsigned col) {
     unsigned index = hash_generator(raw, col, matrix);
-    return element_seek_by_pos(matrix->data[index]->elements, raw, col);
+    return blucket_seek_by_pos(matrix->data[index], raw, col);
 }
 
 Element *matrix_find_by_val(Matrix *matrix, int value) {
     unsigned index;
     Element *element;
     for(index = 0; index < matrix->max_len; index++) {
-        element =  element_seek_by_val(matrix->data[index]->elements, value);
+        printf("matrix find by val matrix, max_len: %d index: %d \n");
+        element =  blucket_seek_by_val(matrix->data[index], value);
         if(element != NULL)
             return element;
     }

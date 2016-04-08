@@ -19,11 +19,11 @@ typedef struct blucket_s {
 //Element functions
 Element *element_new(unsigned, unsigned, int);
 unsigned element_index(Element*);
-Element *element_seek_by_pos(Element*, unsigned, unsigned);
-Element *element_seek_by_val(Element*, int);
 
 Blucket *blucket_new();
 Status blucket_add(Blucket*, Element*, Bool);
 Status blucket_free(Blucket*);
+Element *blucket_seek_by_pos(Blucket*, unsigned, unsigned);
+Element *blucket_seek_by_val(Blucket*, int);
 
 #endif //MATRIX_ELEMENT_H_

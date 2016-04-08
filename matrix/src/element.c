@@ -18,27 +18,6 @@ unsigned element_index(Element *element) {
     return element->col * element->raw;
 }
 
-Element *element_seek_by_pos(Element *element, unsigned raw, unsigned col) {
-    if(element->raw == raw && element->col == col)
-        return element;
-    else if(element->next == NULL)
-        return NULL;
-    else
-        return element_seek_by_pos(element->next, raw, col);
-}
-
-Element *element_seek_by_val(Element *element, int value) {
-    if(element == NULL)
-        return NULL;
-        
-    if(element->value == value)
-        return element;
-    else if(element->next == NULL)
-        return NULL;
-    else
-        return element_seek_by_val(element->next, value);
-}
-
 //blucket functions 
 Blucket *blucket_new() {
     Blucket *blucket = (Blucket*)malloc(sizeof(Blucket));
@@ -101,4 +80,38 @@ Status blucket_free(Blucket* blucket) {
     safe_free(element);
     
     return STAT_SUCCESS;
+}
+
+Element *blucket_seek_by_pos(Blucket *blucket, unsigned raw, unsigned col) {
+    Element *element = blucket->elements;
+    if(element == NULL)
+        return NULL;
+                
+    while(element != NULL) {
+        if(element->raw == raw && element->col == col)
+            return element;
+        else if(element->next == NULL)
+            return NULL;
+        else
+            element = element->next;
+    }
+    
+    return NULL;
+}
+
+Element *blucket_seek_by_val(Blucket *blucket, int value) {
+    Element *element = blucket->elements;
+    if(element == NULL)
+        return NULL;
+        
+    while(element != NULL) {
+        if(element->value == value)
+            return element;
+        else if(element->next == NULL)
+            return NULL;
+        else
+            element = element->next;
+    }
+    
+    return NULL;
 }
