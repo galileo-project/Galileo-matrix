@@ -19,7 +19,10 @@ Element *element_new(unsigned row, unsigned col, int value) {
 }
 
 void element_print(Element *element) {
-    printf("(%d, %d): %d\n", element->row, element->col, element->value);
+    if(element == NULL)
+        printf("(%s, %s): %4s\n", "null", "null", "null");
+    else
+        printf("(%d, %d): %4d\n", element->row, element->col, element->value);
 }
 
 Element* element_next(Element *element) {
@@ -27,6 +30,25 @@ Element* element_next(Element *element) {
         return NULL;
     else
         return element->next;
+}
+
+Element *element_copy(Element *target) {
+    return *element = element_new(target->row, target->col, target->value)
+}
+
+Status element_link(Element* header, Element *element) {
+    Element *tmp = element_copy(element);
+    if(tmp == NULL)
+        return STAT_COPY_ELE_ERR;
+    
+    if(header != NULL) {
+        tmp->next = header;
+        header->pre = tmp;
+        
+    }
+    header = tmp;
+    
+    return STAT_SUCCESS;
 }
 
 //blucket functions 
@@ -121,13 +143,7 @@ Element *blucket_seek_by_val(Blucket *blucket, int value) {
         
     while(element != NULL) {
         if(element->value == value) {
-            if(ret == NULL) {
-                ret = element;
-            } else {
-                tmp->next = element;
-            }
-            element->pre = tmp;
-            tmp = element;
+            element_link(ret, element);
         } else if(element->next == NULL) { 
             return NULL;
         }

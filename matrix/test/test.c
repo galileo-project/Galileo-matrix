@@ -130,7 +130,8 @@ int test_matrix_add_element(void) {
 }
 
 int test_matrix_find_element(void) {
-    Element *element;
+    Element *element_by_pos;
+    Element *element_by_val;
     Matrix *matrix = new_matrix();
     int res = fill_matrix(matrix, 20, 20);
     if(res != 0) {
@@ -139,12 +140,12 @@ int test_matrix_find_element(void) {
     }
     
     //find element by pos
-    element = matrix_find_by_pos(matrix, 3, 15);
-    if(element == NULL) {
+    element_by_pos = matrix_find_by_pos(matrix, 3, 15);
+    if(element_by_pos == NULL) {
         LOG_ERR("find element from matrix by pos");
         return 1;
     }
-    if(element->value == 3*15) {
+    if(element_by_pos->value == 3*15) {
         LOG_SUCCESS("find element from matrix by pos");
     } else {
         LOG_ERR("find element from matrix by pos");
@@ -152,20 +153,20 @@ int test_matrix_find_element(void) {
     }
     
     //find element by value
-    safe_free(element);
-    element = matrix_find_by_val(matrix, 3*15);
-    if(element == NULL) {
+    element_by_val = matrix_find_by_val(matrix, 3*15);
+    if(element_by_val == NULL) {
         LOG_ERR("find element from matrix by value");
         return 1;
     }
-    while(element != NULL) {
-        if(element->row == 3 && element->col == 15) {
+    while(element_by_val != NULL) {
+        if(element_by_val->row == 3 && element_by_val->col == 15) {
             LOG_SUCCESS("find element from matrix by value");
-        } else if(element->next == NULL){
+            break;
+        } else if(element_by_val->next == NULL){
             LOG_ERR("find element from matrix by value");
             return 1;
         } else {
-            element = element->next;
+            element_by_val = element_by_val->next;
         }
     }
     
