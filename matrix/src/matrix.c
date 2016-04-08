@@ -1,7 +1,6 @@
 #include "matrix.h"
 #include "element.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 //config
 Config *config_new(unsigned raw, unsigned col) {
@@ -26,7 +25,6 @@ Matrix *matrix_new(Config *config) {
     matrix->curr_col = 0;
     matrix->curr_raw = 0;
     matrix->curr_len = 0;
-    printf("matrix info: max_col %d ,max_raw: %d, max_len: %d", matrix->max_col, matrix->max_raw, matrix->max_len);
     matrix->data     = (Blucket**)malloc(matrix->max_len * sizeof(Blucket*));
     if(matrix->data == NULL) {
         safe_free(matrix);
@@ -99,9 +97,7 @@ Element *matrix_find_by_val(Matrix *matrix, int value) {
     unsigned index;
     Element *element;
     for(index = 0; index < matrix->max_len; index++) {
-        printf("matrix find by val matrix, max_len: %d index: %d, len: %d \n",\ 
-            matrix->max_len, index, sizeof(matrix->data)/sizeof(matrix->data[0]));
-        element =  blucket_seek_by_val(matrix->data[index], value);
+        element =  blucket_seek_by_val(matrix->data + index, value);
         if(element != NULL)
             return element;
     }

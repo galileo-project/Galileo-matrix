@@ -22,15 +22,15 @@ typedef struct config_s {
 //functions of matrix
 Config *config_new(unsigned, unsigned);
 
-Matrix *matrix_new(Config*);
-Status matrix_add(Matrix*, Element*);
-Status matrix_update(Matrix*, Element*);
-Status matrix_clear(Matrix*);
+Matrix  *matrix_new(Config*);
+Status  matrix_add(Matrix*, Element*);
+Status  matrix_update(Matrix*, Element*);
+Status  matrix_clear(Matrix*);
 Element *matrix_find_by_pos(Matrix*, unsigned, unsigned);
 Element *matrix_find_by_val(Matrix*, int);
-unsigned hash_generator( unsigned, unsigned, Matrix*);
-Status matrix_expand(Matrix*);
+Status  matrix_expand(Matrix*);
 
-Matrix *array_to_matrix(int*, unsigned, unsigned);
+unsigned hash_generator( unsigned, unsigned, Matrix*);
+Matrix   *array_to_matrix(int*, unsigned, unsigned);
 
 #endif //MATRIX_MATRIX_H_
