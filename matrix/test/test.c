@@ -14,6 +14,10 @@
 #define LOG_INFO(msg) do{\
         printf("INFO:    %s .\n", msg);\
     }while(0)
+    
+#define LOG_RAW(msg) do{\
+        printf("%s .\n", msg);\
+    }while(0)
 
 const unsigned TEST_RAW_LEN = 100;
 const unsigned TEST_COL_LEN = 100;
@@ -47,9 +51,9 @@ int main() {
     }
     
     if(result == 0)
-        LOG_SUCCESS("success");
+        LOG_RAW("success");
     else
-        LOG_ERR("failed");
+        LOG_RAW("failed");
        
     return result;
 }
@@ -149,7 +153,7 @@ int test_matrix_find_element(void) {
         LOG_ERR("fine element from matrix by value");
         return 1;
     }
-    if(element->raw == 3 && element->col == 15) {
+    if(element->row == 3 && element->col == 15) {
         LOG_SUCCESS("fine element from matrix by value");
     } else {
         LOG_ERR("find element from matrix by value");
@@ -217,8 +221,8 @@ static Matrix *new_matrix(void) {
     return matrix_new(config);
 }
 
-static int fill_matrix(Matrix *matrix, unsigned raw, unsigned col) {
-    for(unsigned i =0; i < raw; i++) {
+static int fill_matrix(Matrix *matrix, unsigned row, unsigned col) {
+    for(unsigned i =0; i < row; i++) {
         for(unsigned j = 0; j < col; j++) {
             Element *element = element_new(i, j, i*j);
             if(element == NULL)

@@ -5,7 +5,7 @@
 
 typedef struct element_s {
     unsigned col;
-    unsigned raw;
+    unsigned row;
     int      value;
     struct element_s *next;
     struct element_s *pre;

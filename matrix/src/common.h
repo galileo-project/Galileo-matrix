@@ -5,7 +5,7 @@
 #define POS_EQ(ele_l, ele_r) (\
                                  (ele_l == NULL || ele_r == NULL) ? 0 : \
                                  (\
-                                     ((ele_l)->raw == (ele_r)->raw && (ele_l)->col == (ele_r)->col) ? 1 : 0 \
+                                     ((ele_l)->row == (ele_r)->row && (ele_l)->col == (ele_r)->col) ? 1 : 0 \
                                  )\
                              )
                              

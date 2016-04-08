@@ -3,13 +3,13 @@
 #include <stdlib.h>
 
 //config
-Config *config_new(unsigned raw, unsigned col) {
+Config *config_new(unsigned row, unsigned col) {
     Config *config = (Config*)malloc(sizeof(Config));
     if(config == NULL)
         return NULL;
     
     config->max_col = col;
-    config->max_raw = raw;
+    config->max_row = row;
     
     return config;
 }
@@ -20,10 +20,10 @@ Matrix *matrix_new(Config *config) {
         return NULL;
     
     matrix->max_col  = config->max_col;
-    matrix->max_raw  = config->max_raw;
-    matrix->max_len  = matrix->max_col * matrix->max_raw;
+    matrix->max_row  = config->max_row;
+    matrix->max_len  = matrix->max_col * matrix->max_row;
     matrix->curr_col = 0;
-    matrix->curr_raw = 0;
+    matrix->curr_row = 0;
     matrix->curr_len = 0;
     matrix->data     = (Blucket**)malloc(matrix->max_len * sizeof(Blucket*));
     if(matrix->data == NULL) {
@@ -38,23 +38,23 @@ Matrix *matrix_new(Config *config) {
 
 
 Status matrix_add(Matrix *matrix, Element *element) {
-    unsigned index = hash_generator(element->raw, element->col, matrix);
+    unsigned index = hash_generator(element->row, element->col, matrix);
     if(index >= matrix->max_len) {
         return STAT_MAX_MATRIX_LEN_ERR;
     }
     
     //Update curr index
     matrix->curr_len ++;
-    if(element->raw > matrix->curr_raw)
-        matrix->curr_raw = element->raw;
-    if(element->raw > matrix->curr_raw)
-        matrix->curr_raw = element->raw;
+    if(element->row > matrix->curr_row)
+        matrix->curr_row = element->row;
+    if(element->row > matrix->curr_row)
+        matrix->curr_row = element->row;
         
     return blucket_add(matrix->data[index], element, False);
 }
 
 Status matrix_update(Matrix *matrix, Element *element) {
-    unsigned index = hash_generator(element->raw, element->col, matrix);
+    unsigned index = hash_generator(element->row, element->col, matrix);
     return blucket_add(matrix->data[index], element, True);
 }
 
@@ -79,9 +79,9 @@ Status matrix_clear(Matrix* matrix) {
     return STAT_SUCCESS;
 }
 
-Element *matrix_find_by_pos(Matrix *matrix, unsigned raw, unsigned col) {
-    unsigned index = hash_generator(raw, col, matrix);
-    return blucket_seek_by_pos(matrix->data[index], raw, col);
+Element *matrix_find_by_pos(Matrix *matrix, unsigned row, unsigned col) {
+    unsigned index = hash_generator(row, col, matrix);
+    return blucket_seek_by_pos(matrix->data[index], row, col);
 }
 
 Element *matrix_find_by_val(Matrix *matrix, int value) {
@@ -95,9 +95,9 @@ Element *matrix_find_by_val(Matrix *matrix, int value) {
     return NULL;
 }
 
-unsigned hash_generator(unsigned raw, unsigned col, Matrix *matrix) {
+unsigned hash_generator(unsigned row, unsigned col, Matrix *matrix) {
     //TODO update hash generator
-    return (raw * col);
+    return (row * col);
 }
 
 Status matrix_expand(Matrix* matrix) {
@@ -105,7 +105,7 @@ Status matrix_expand(Matrix* matrix) {
     return STAT_SUCCESS;
 }
 
-Matrix *array_to_matrix(int *array, unsigned raw, unsigned col) {
+Matrix *array_to_matrix(int *array, unsigned row, unsigned col) {
     //TODO implement
     return NULL;
 }

@@ -2,12 +2,12 @@
 #include <stdlib.h>
 
 //element functions 
-Element *element_new(unsigned raw, unsigned col, int value) {
+Element *element_new(unsigned row, unsigned col, int value) {
     Element *element = (Element*)malloc(sizeof(Element));
     if(element == NULL)
         return NULL;
     
-    element->raw   = raw;
+    element->row   = row;
     element->col   = col;
     element->value = value;
     element->pre   = NULL;
@@ -17,7 +17,7 @@ Element *element_new(unsigned raw, unsigned col, int value) {
 }
 
 unsigned element_index(Element *element) {
-    return element->col * element->raw;
+    return element->col * element->row;
 }
 
 //blucket functions 
@@ -80,13 +80,13 @@ Status blucket_free(Blucket* blucket) {
     return STAT_SUCCESS;
 }
 
-Element *blucket_seek_by_pos(Blucket *blucket, unsigned raw, unsigned col) {
+Element *blucket_seek_by_pos(Blucket *blucket, unsigned row, unsigned col) {
     Element *element = blucket->elements;
     if(element == NULL)
         return NULL;
                 
     while(element != NULL) {
-        if(element->raw == raw && element->col == col)
+        if(element->row == row && element->col == col)
             return element;
         else if(element->next == NULL)
             return NULL;
