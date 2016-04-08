@@ -31,7 +31,7 @@ Matrix *matrix_new(Config *config) {
         return NULL;
     }
     for(unsigned i = 0; i < matrix->max_len; i++)
-        matrix[i] = blucket_new();
+        matrix->data[i] = blucket_new();
     
     return matrix;
 }
