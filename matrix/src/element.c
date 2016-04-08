@@ -10,6 +10,8 @@ Element *element_new(unsigned raw, unsigned col, int value) {
     element->raw   = raw;
     element->col   = col;
     element->value = value;
+    element->pre   = NULL;
+    element->next  = NULL;
     
     return element;
 }
@@ -33,22 +35,17 @@ Blucket *blucket_new() {
 Status blucket_add(Blucket *blucket, Element *element, Bool update) {
     Element *tmp = blucket->elements; 
     if(tmp == NULL) {
-        element->pre = NULL;
-        blucket->elements = element;
-        return STAT_SUCCESS;
-    } else if(POS_EQ(tmp, element) && update) {
-        element->pre = NULL;
-        element->next = blucket->elements->next;
         blucket->elements = element;
         return STAT_SUCCESS;
     }
-        
+    
     while(tmp != NULL) {
-        if(POS_EQ(tmp->next, element) && update) {
-            element->pre = tmp->next->pre;
-            element->pre = tmp->next->next;
-            safe_free(tmp->next);
-            tmp->next = element;
+        if(POS_EQ(tmp, element) && update) {
+            element->pre = tmp->pre;
+            element->next = tmp->next;
+            if(element->pre != NULL)
+                element->pre->next = element;
+            safe_free(tmp);
             return STAT_SUCCESS;
         } else if(tmp->next == NULL) {
             element->pre = tmp;
