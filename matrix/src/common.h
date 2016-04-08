@@ -16,6 +16,8 @@ extern const Status STAT_SUCCESS,
                     STAT_ELE_EXIST_ERR, 
                     STAT_NEW_BLU_ERR, 
                     STAT_INIT_MATRIX_ERR, 
+                    STAT_COPY_ELE_ERR,
+                    STAT_LINK_ELE_ERR,
                     STAT_MAX_MATRIX_LEN_ERR;
 
 typedef enum bool_e {
