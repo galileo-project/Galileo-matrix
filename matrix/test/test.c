@@ -4,19 +4,19 @@
 #include "utils.h"
 #include "element.h"
 
-#defind LOG_ERR(msg) do{\
+#define LOG_ERR(msg) do{\
         printf("ERROR:   %s.\n", msg);\
     }while(0)
     
-#defind LOG_SUCCESS(msg) do{\
+#define LOG_SUCCESS(msg) do{\
         printf("SUCCESS: %s.\n", msg);\
     }while(0)
     
-#defind LOG_INFO(msg) do{\
+#define LOG_INFO(msg) do{\
         printf("INFO:    %s.\n", msg);\
     }while(0)
     
-#defind LOG_RAW(msg) do{\
+#define LOG_RAW(msg) do{\
         printf("%s.\n", msg);\
     }while(0)
 
