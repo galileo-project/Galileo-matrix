@@ -33,7 +33,7 @@ Element* element_next(Element *element) {
 }
 
 Element *element_copy(Element *target) {
-    return *element = element_new(target->row, target->col, target->value)
+    return element_new(target->row, target->col, target->value);
 }
 
 Status element_link(Element* header, Element *element) {
