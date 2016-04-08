@@ -116,12 +116,12 @@ Status matrix_print(Matrix* matrix) {
     int res;
     
     for(unsigned col = 0; col < matrix->curr_col; col++) {
-        printf("%4d" % col);            //print col index
+        printf("%4d", col);            //print col index
     }
     printf("\n");
     
     for(unsigned row = 0; row < matrix->curr_row; row++) {
-        printf("%4d | " % row);         //print row index
+        printf("%4d | ", row);         //print row index
         for(unsigned col = 0; col < matrix->curr_col; col++) {
             element = matrix_find_by_pos(matrix, row, col);
             if(element == NULL)
