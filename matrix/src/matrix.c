@@ -114,3 +114,8 @@ Status matrix_expand(Matrix* matrix) {
     //TODO implement
     return STAT_SUCCESS;
 }
+
+Matrix *array_to_matrix(void *array, unsigned raw, unsigned col) {
+    //TODO implement
+    return NULL;
+}

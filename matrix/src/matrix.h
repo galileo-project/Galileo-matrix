@@ -31,4 +31,6 @@ Element *matrix_find_by_val(Matrix*, int);
 unsigned hash_generator( unsigned, unsigned, Matrix*);
 Status matrix_expand(Matrix*);
 
+Matrix *array_to_matrix(void*, unsigned, unsigned);
+
 #endif //MATRIX_MATRIX_H_
