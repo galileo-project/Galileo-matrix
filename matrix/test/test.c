@@ -4,7 +4,7 @@
 #include "element.h"
 
 #define LOG_ERR(msg) do{\
-        printf("ERROR: %s .\n", msg);\
+        printf("ERROR:   %s .\n", msg);\
     }while(0)
     
 #define LOG_SUCCESS(msg) do{\
@@ -12,7 +12,7 @@
     }while(0)
     
 #define LOG_INFO(msg) do{\
-        printf("INFO: %s .\n", msg);\
+        printf("INFO:    %s .\n", msg);\
     }while(0)
 
 const unsigned TEST_RAW_LEN = 100;

@@ -25,7 +25,7 @@ Matrix *matrix_new(Config *config) {
     matrix->curr_col = 0;
     matrix->curr_raw = 0;
     matrix->curr_len = 0;
-    matrix->data     = (Blucket**)malloc(matrix->max_len * sizeof(Blucket*));
+    matrix->data     = (Blucket*)malloc(matrix->max_len * sizeof(Blucket));
     if(matrix->data == NULL) {
         safe_free(matrix);
         return NULL;
@@ -97,7 +97,7 @@ Element *matrix_find_by_val(Matrix *matrix, int value) {
     unsigned index;
     Element *element;
     for(index = 0; index < matrix->max_len; index++) {
-        element =  blucket_seek_by_val(matrix->data + index, value);
+        element =  blucket_seek_by_val(matrix->data[index], value);
         if(element != NULL)
             return element;
     }
