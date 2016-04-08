@@ -44,8 +44,11 @@ Status blucket_add(Blucket *blucket, Element *element, Bool update) {
         if(POS_EQ(tmp, element) && update) {
             element->pre = tmp->pre;
             element->next = tmp->next;
+            if(blucket->elements == tmp)
+                blucket->elements = element;
             if(element->pre != NULL)
                 element->pre->next = element;
+                
             safe_free(tmp);
             return STAT_SUCCESS;
         } else if(tmp->next == NULL) {

@@ -29,6 +29,7 @@ Status  matrix_clear(Matrix*);
 Element *matrix_find_by_pos(Matrix*, unsigned, unsigned);
 Element *matrix_find_by_val(Matrix*, int);
 Status  matrix_expand(Matrix*);
+void    matrix_print(Matrix*);
 
 unsigned hash_generator( unsigned, unsigned, Matrix*);
 Matrix   *array_to_matrix(int*, unsigned, unsigned);

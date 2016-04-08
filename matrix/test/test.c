@@ -4,19 +4,19 @@
 #include "element.h"
 
 #define LOG_ERR(msg) do{\
-        printf("ERROR:   %s .\n", msg);\
+        printf("ERROR:   %s.\n", msg);\
     }while(0)
     
 #define LOG_SUCCESS(msg) do{\
-        printf("SUCCESS: %s .\n", msg);\
+        printf("SUCCESS: %s.\n", msg);\
     }while(0)
     
 #define LOG_INFO(msg) do{\
-        printf("INFO:    %s .\n", msg);\
+        printf("INFO:    %s.\n", msg);\
     }while(0)
     
 #define LOG_RAW(msg) do{\
-        printf("%s .\n", msg);\
+        printf("%s.\n", msg);\
     }while(0)
 
 const unsigned TEST_RAW_LEN = 100;
@@ -196,7 +196,6 @@ int test_matrix_update(void) {
         LOG_ERR("test matrix update");
         return 1;
     } else {
-        LOG_INFO("matrix updated, test element");
         Element *element = matrix_find_by_pos(matrix, 10, 10);
         if(element == NULL) {
             LOG_ERR("test matrix update -> find element error");
