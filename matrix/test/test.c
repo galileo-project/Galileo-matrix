@@ -4,19 +4,19 @@
 #include "utils.h"
 #include "element.h"
 
-#define LOG_ERR(msg) do{\
+#defind LOG_ERR(msg) do{\
         printf("ERROR:   %s.\n", msg);\
     }while(0)
     
-#define LOG_SUCCESS(msg) do{\
+#defind LOG_SUCCESS(msg) do{\
         printf("SUCCESS: %s.\n", msg);\
     }while(0)
     
-#define LOG_INFO(msg) do{\
+#defind LOG_INFO(msg) do{\
         printf("INFO:    %s.\n", msg);\
     }while(0)
     
-#define LOG_RAW(msg) do{\
+#defind LOG_RAW(msg) do{\
         printf("%s.\n", msg);\
     }while(0)
 
@@ -136,27 +136,29 @@ int test_matrix_find_element(void) {
         return res;
     }
     
+    //find element by pos
     element = matrix_find_by_pos(matrix, 3, 15);
     if(element == NULL) {
-        LOG_ERR("fine element from matrix by value");
+        LOG_ERR("find element from matrix by pos");
         return 1;
     }
     if(element->value == 3*15) {
-        LOG_SUCCESS("fine element from matrix by pos");
+        LOG_SUCCESS("find element from matrix by pos");
     } else {
         LOG_ERR("find element from matrix by pos");
         return 1;
     }
     
+    //find element by value
     safe_free(element);
     element = matrix_find_by_val(matrix, 3*15);
     if(element == NULL) {
-        LOG_ERR("fine element from matrix by value");
+        LOG_ERR("find element from matrix by value");
         return 1;
     }
     while(element != NULL) {
         if(element->row == 3 && element->col == 15) {
-            LOG_SUCCESS("fine element from matrix by value");
+            LOG_SUCCESS("find element from matrix by value");
         } else if(element->next == NULL){
             LOG_ERR("find element from matrix by value");
             return 1;

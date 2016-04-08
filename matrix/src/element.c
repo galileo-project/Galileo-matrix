@@ -120,6 +120,7 @@ Element *blucket_seek_by_val(Blucket *blucket, int value) {
             }
             element->pre = tmp;
             tmp = element;
+            element = element->next;
         } else if(element->next == NULL) { 
             return NULL;
         } else {
