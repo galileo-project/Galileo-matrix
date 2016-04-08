@@ -116,11 +116,11 @@ Status matrix_print(Matrix* matrix) {
     Element *element;
     int res;
     
-    printf("%4s   ", "");
+    printf("%4s   ", "+");
     for(unsigned col = 0; col < matrix->curr_col; col++) {
         printf("%4d", col);            //print col index
     }
-    printf("\n");
+    printf("\n\n");
     
     for(unsigned row = 0; row < matrix->curr_row; row++) {
         printf("%4d | ", row);         //print row index
