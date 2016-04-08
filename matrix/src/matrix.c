@@ -1,6 +1,7 @@
 #include "matrix.h"
 #include "element.h"
 #include "utils.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 //config
@@ -122,7 +123,7 @@ Status matrix_print(Matrix* matrix) {
     printf("\n");
     
     for(unsigned row = 0; row < matrix->curr_row; row++) {
-        printf("%d | ", row);         //print row index
+        printf("%4d | ", row);         //print row index
         for(unsigned col = 0; col < matrix->curr_col; col++) {
             element = matrix_find_by_pos(matrix, row, col);
             if(element == NULL)
